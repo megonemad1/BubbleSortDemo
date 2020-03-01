@@ -1,0 +1,19 @@
+#container {
+    width: 200px;
+    color:#fff;
+    position: relative;
+    text-align:center;
+}
+.move {
+    position: relative;
+    margin:10px;
+    background:#ff00ab;
+    padding:5px;
+    border-radius:3px;
+    text-align:center;
+    display:inline-block;
+}
+.hilight {
+
+    background: #00ccff 
+}
