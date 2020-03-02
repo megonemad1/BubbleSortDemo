@@ -1,5 +1,5 @@
-var sort_step = (lst) => {
-    for (var i = 0; i < lst.length - 1; i++) {
+let sort_step = (lst) => {
+    for (let i = 0; i < lst.length - 1; i++) {
         if (lst[i] < lst[i + 1]) {
             tmp = lst[i];
             lst[i] = lst[i + 1];
@@ -9,8 +9,37 @@ var sort_step = (lst) => {
     }
     return lst;
 }
-var score = 0;
-var animating = false;
+const max_life = 3;
+let cLife = max_life;
+const life_container = $("#lifeBar");
+const make_life = node => {
+    for (let x = 0; x < max_life; x++) {
+        node.append(`<img id="life_${x}" class="life_container"/>`);
+    }
+    return life => {
+        node.children('').each(function (i, life_container) {
+            life_container.setAttribute("src", i < life ? "Images\\Full_Life.svg" : "Images\\Empty_Life.svg");
+        });
+    };
+};
+const set_life = make_life(life_container);
+const item_container = $("#container");
+const item_gen = (node) => {
+    return n => {
+        let count = node.children.length;
+        for (let x = 0; x < Math.abs(n); x++) {
+            if (n >= 0)
+                node.append(`<div id="item_${count}" class="move">Item ${count++}</div>`);
+            else
+                $(node).remove(`#item_${--count - x}`);
+        }
+
+    };
+};
+const item_factory = item_gen(item_container);
+item_factory(5);
+set_life(cLife);
+let animating = false;
 $('#container').on('click', '.move', function () {
     const hilightclass = "hilight";
     if (!animating) {
@@ -24,12 +53,13 @@ $('#container').on('click', '.move', function () {
             div1.removeClass(hilightclass);
             div2.removeClass(hilightclass);
             swap_divs(div1, div2, 200, () => {
-                const current_order = getCurrentValues().join();
-                if (expected_order == current_order)
-                    score++;
-                else
-                    score--;
-                $('#score').text(score);
+                const current = getCurrentValues();
+                current_order = current.join();
+                next_step = sort_step(current).join();
+                console.log(`${expected_order} == ${current_order}`);
+                if (expected_order != current_order)
+                    cLife--;
+                set_life(cLife);
                 animating = false;
             });
         }
