@@ -63,6 +63,10 @@ $('#container').on('click', '.move', function () {
                 current_order = getCurrentValues().join();
                 if (steps[0] != current_order) {
                     cLife--;
+                    if (cLife <= 0) {
+                        $('#container .move').addClass("loss");
+                        $('#container .move').removeClass("move");
+                    }
                     const errClass = 'err';
                     divs.forEach(e => e.addClass(errClass));
                     swap_divs(divs[0], divs[1], 200, (divs) => {
@@ -71,7 +75,7 @@ $('#container').on('click', '.move', function () {
                 }
                 else {
                     steps.shift();
-                    if (steps.length <= 0){
+                    if (steps.length <= 0) {
                         $('#container .move').addClass("win");
                         $('#container .move').removeClass("move");
                     }
