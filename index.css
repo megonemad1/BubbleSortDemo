@@ -17,6 +17,20 @@
 
     background: #00ccff 
 }
+.err {
+
+    background: #2a0000 
+}
+.win {
+    position: relative;
+    margin:10px;
+    background: #25e970;
+    padding:5px;
+    border-radius:3px;
+    text-align:center;
+    display:inline-block;
+
+}
 .life_container{
 height: 50px;
 }
