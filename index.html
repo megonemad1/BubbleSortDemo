@@ -16,7 +16,7 @@
 </head>
 
 <body>
-   <script src="htmlTemplate.js" data="navbar.html"></script>
+    <script src="htmlTemplate.js" data="navbar.html"></script>
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
             <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
@@ -114,26 +114,34 @@
                     <div class="card row mb-2 ">
                         <div class=" bg-dark">
                             <div class="card-body">
-                                <h4 class="card-title text-white">BubbleSort Psudocode</h4>
+                                <h4 class="card-title text-white">BubbleSort Pseudo</h4>
                             </div>
                         </div>
-                        <div><pre> <code><span>
-    procedure bubbleSort(A : list of sortable items)
+                        <div class="card-body">
+                            <code class="lang-python">
+    bubbleSort(A : list of sortable items)
+    <div class=ml-2>
         n := length(A)
         repeat
-            swapped = false
-            for i := 1 to n - 1 inclusive do
-                /* if this pair is out of order */
-                if A[i - 1] > A[i] then
-                    /* swap them and remember something changed */
-                    swap(A[i - 1], A[i])
-                    swapped := true
+        <div class=ml-2>
+            <p class="mt-0 mb-0">swapped = false</p>
+            <p class="mt-0 mb-0">for i := 1 to n - 1 inclusive do</p>
+            <div class=ml-2>
+                <p class="mt-0 mb-0">/* if this pair is out of order */</p>
+                <p class="mt-0 mb-0"> if A[i - 1] > A[i] then</p>
+                <div class=ml-2>
+                    <p class="mt-0 mb-0">/* swap them and remember something changed */</p>
+                    <p class="mt-0 mb-0">swap(A[i - 1], A[i])</p>
+                    <p class="mt-0 mb-0">swapped := true</p>
+                </div>
                 end if
+            </div>
             end for
+        </div>
         until not swapped
+    </div>
     end procedure
-</span></code></pre></div>
-                        <div class="card-body">
+</code>
                             <p class="card-text">Although bubble sort is one of the simplest sorting algorithms to
                                 understand and
                                 implement, its O(n2) complexity means that its efficiency decreases dramatically on
